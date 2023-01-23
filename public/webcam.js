@@ -121,6 +121,8 @@ text.addEventListener("keydown", (e) => {
 const inviteButton = document.querySelector("#inviteButton");
 const muteButton = document.querySelector("#muteButton");
 const stopVideo = document.querySelector("#stopVideo");
+
+// ปิดเปิดไมค์ 
 muteButton.addEventListener("click", () => {
     const enabled = myVideoStream.getAudioTracks()[0].enabled;
     if (enabled) {
@@ -136,6 +138,7 @@ muteButton.addEventListener("click", () => {
     }
 });
 
+//  ปิดกล้อง
 stopVideo.addEventListener("click", () => {
     const enabled = myVideoStream.getVideoTracks()[0].enabled;
     if (enabled) {
@@ -151,6 +154,7 @@ stopVideo.addEventListener("click", () => {
     }
 });
 
+// เชิญบุคคลอื่นเข้า ห้อง
 inviteButton.addEventListener("click", (e) => {
     prompt(
         "Copy this link and send it to people you want to meet with",
@@ -161,6 +165,7 @@ inviteButton.addEventListener("click", (e) => {
 socket.on("createMessage", (message, userName) => {
     messages.innerHTML =
         messages.innerHTML +
+        //  ${userName === user ? "me" แสดงชื่อว่า me 
         `<div class="message">
         <b><i class="far fa-user-circle"></i> <span> ${userName === user ? "me" : userName
         }</span> </b>
